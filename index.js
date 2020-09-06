@@ -1,14 +1,14 @@
-let lat = -1
-let long = -1
-
 $(document).ready(function(){
 	
+	let lat;
+	let long;
 	let settings;
 
 	if (navigator.geolocation) {
 	  navigator.geolocation.getCurrentPosition(showPosition, showError);
 	} else {
 	   $("#error").text("Geolocation is not supported by this browser.");
+	   $("#test-btn").attr('disabled', true)
 	}
 
 	function showPosition(position) {
