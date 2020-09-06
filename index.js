@@ -49,6 +49,9 @@ $(document).ready(function(){
 	$('#test-btn').click(function(e){
 		e.preventDefault()
 		$.ajax(settings).done(function (response) {
+			console.log(lat)
+			console.log(long)
+			console.log(settings["url"])
 			selection = Math.floor(Math.random() * 10);
 			restaurant = response["restaurants"][selection]["restaurant"]["name"]
 			restaurant_url = response["restaurants"][selection]["restaurant"]["url"]
