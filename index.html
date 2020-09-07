@@ -12,7 +12,11 @@
 	<title>Document</title>
 </head>
 <body>
-	<div><button id="test-btn">What the fuck do I eat</button></div>
+	<form action="/action_page.php" method="get" id="mainform">
+	  <label for="radius">Radius (km):</label>
+	  <input type="text" id="radius" name="radius" value=10><br><br>
+	</form>
+	<div><button type='submit' id="test-btn" form=mainform>What the fuck do I eat</button></div>
 	<div>
 		<a id="test-link" href=""></a>
 		<span id="error"></span>

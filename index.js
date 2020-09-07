@@ -16,16 +16,6 @@ $(document).ready(function(){
 	  long = position.coords.longitude
 	  console.log(lat)
 	  console.log(long)
-	  settings = {
-			"async": true,
-			"crossDomain": true,
-			"url": "https://developers.zomato.com/api/v2.1/search?lat="+lat+"&lon="+long+"&radius=20000",
-			"method": "GET",
-			"headers": {
-				"Accept": "application/json",
-				"user-key": "df955f8b62ed3879394c22edb2dd71ac"
-				}
-		}	
 	}
 
 	function showError(error) {
@@ -47,8 +37,22 @@ $(document).ready(function(){
   		$("#test-btn").attr('disabled', true)
 	}
 
-	$('#test-btn').click(function(e){
+	$('#mainform').submit(function(e){
 		e.preventDefault()
+		var inputs = $('#mainform :input');
+		var radius = inputs[0].value
+		radius = parseFloat(radius)*1000
+		console.log(radius)
+		settings = {
+			"async": true,
+			"crossDomain": true,
+			"url": "https://developers.zomato.com/api/v2.1/search?lat="+lat+"&lon="+long+"&radius="+radius,
+			"method": "GET",
+			"headers": {
+				"Accept": "application/json",
+				"user-key": "df955f8b62ed3879394c22edb2dd71ac"
+			}
+		}
 		$.ajax(settings).done(function (response) {
 			console.log(lat)
 			console.log(long)
